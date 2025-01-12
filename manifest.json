@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Music is Haram",
+    "version": "1.0",
+    "description": "This extension will block all music from playing on your browser.",
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": ["<all_urls>"],
+    
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "action":{
+        "default_title": "Music is Haram",
+        "default_popup": "popup.html"
+    }
+
+}
