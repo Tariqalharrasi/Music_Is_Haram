@@ -19,7 +19,7 @@ The extension is currently in development and not yet available for download. St
 
 ## Contributing
 
-Feel free to contribute to the project by submitting issues or pull requests on [GitHub](https://github.com/your-repo).
+Feel free to contribute to the project by submitting issues or pull requests on [GitHub](https://github.com/Tariqalharrasi).
 
 ## License
 
