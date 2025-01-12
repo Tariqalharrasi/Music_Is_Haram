@@ -28,3 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+document.getElementById('alphaSlider').addEventListener('input', (event) => {
+    const alpha = parseFloat(event.target.value);
+    chrome.runtime.sendMessage({ type: 'SET_ALPHA', alpha });
+});
+
