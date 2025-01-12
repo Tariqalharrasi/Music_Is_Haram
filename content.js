@@ -28,6 +28,8 @@ console.log('Content script loaded');
         });
     }
 
+
+      
     // Initialize Audio Processing
     async function initializeAudioProcessing() {
         try {

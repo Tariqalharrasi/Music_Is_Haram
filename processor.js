@@ -1,28 +1,17 @@
 class CustomProcessor extends AudioWorkletProcessor {
     constructor() {
         super();
-        this.alpha = 0.95; // Default alpha value for high-pass
-        this.lastOutput = new Float32Array(2); // Maintain state for each channel
-        this.lowFreqCutoff = 100; // Lower cutoff frequency for voice (in Hz)
-        this.highFreqCutoff = 3000; // Upper cutoff frequency for voice (in Hz)
-
-        // Listen for messages from the main thread to adjust parameters dynamically
-        this.port.onmessage = (event) => {
-            if (event.data.type === 'SET_PARAMETERS' && typeof event.data.alpha === 'number') {
-                this.alpha = event.data.alpha;
-                console.log(`Alpha value updated to: ${this.alpha}`);
-            }
-        };
+        this.alpha = 0.95;  // Default alpha value
+        this.lowFreqCutoff = 150; // Lower cutoff frequency for voice (in Hz)
+        this.highFreqCutoff = 2500; // Upper cutoff frequency for voice (in Hz)
     }
 
     // Simple bandpass filter to isolate voice frequencies
     applyBandpassFilter(audioData, sampleRate) {
         const filtered = new Float32Array(audioData.length);
 
-        // Example implementation using a basic bandpass filter
-        // Apply low-pass filter
+        // Apply low-pass and high-pass filters
         const lowPassAlpha = Math.exp(-2 * Math.PI * this.lowFreqCutoff / sampleRate);
-        // Apply high-pass filter
         const highPassAlpha = Math.exp(-2 * Math.PI * this.highFreqCutoff / sampleRate);
 
         let lastLowPassOutput = 0;
